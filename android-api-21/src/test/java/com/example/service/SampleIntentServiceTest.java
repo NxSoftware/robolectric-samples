@@ -1,31 +1,28 @@
 package com.example.service;
 
+import static org.junit.Assert.assertNotSame;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-
-import com.example.BuildConfig;
-
+import android.content.SharedPreferences;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
-import org.robolectric.fakes.RoboSharedPreferences;
 
-import static org.junit.Assert.assertNotSame;
-
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class)
+@RunWith(RobolectricTestRunner.class)
 public class SampleIntentServiceTest {
 
     @Test
     public void addsDataToSharedPreference() {
         Application application = RuntimeEnvironment.application;
-        RoboSharedPreferences preferences = (RoboSharedPreferences) application
+        SharedPreferences preferences = application
                 .getSharedPreferences("example", Context.MODE_PRIVATE);
         Intent intent =  new Intent(application, SampleIntentService.class);
-        SampleIntentService registrationService = new SampleIntentService();
+        SampleIntentService registrationService =
+            Robolectric.setupService(SampleIntentService.class);
 
         registrationService.onHandleIntent(intent);
 

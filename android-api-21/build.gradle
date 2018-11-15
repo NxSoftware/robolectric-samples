@@ -1,8 +1,15 @@
+buildscript {
+    dependencies {
+    }
+}
+
 apply plugin: "com.android.application"
+apply plugin: 'com.noveogroup.android.check'
+apply plugin: "jacoco"
+apply plugin: 'com.github.kt3k.coveralls'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.example"
@@ -13,23 +20,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
-apply plugin: 'com.noveogroup.android.check'
-apply plugin: "jacoco"
-apply plugin: 'com.github.kt3k.coveralls'
-
 
 check {
     abortOnError true
 }
 
 dependencies {
-    testCompile "junit:junit:4.10"
-    testCompile "org.assertj:assertj-core:1.7.0"
-    testCompile "org.robolectric:robolectric:${robolectricVersion}"
-}
-
-jacoco {
-    toolVersion = "0.7.0.201403182114"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:1.7.0"
+    testImplementation "org.robolectric:robolectric:${robolectricVersion}"
 }
 
 jacoco {

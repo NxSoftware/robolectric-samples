@@ -1,25 +1,25 @@
-ext {
-    robolectricVersion = "3.0"
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.noveogroup.android:check:1.2.3'
+        // plugin for reporting code coverage to coveralls
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
+        classpath 'org.ajoberstar:gradle-jacoco:0.2.0'
+    }
 }
 
-subprojects {
-    buildscript {
-        repositories {
-            jcenter()
-        }
-
-        dependencies {
-            classpath "com.android.tools.build:gradle:1.2.3"
-            classpath 'com.noveogroup.android:check:1.2.3'
-            // plugin for reporting code coverage to coveralls
-            classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
-            classpath 'org.ajoberstar:gradle-jacoco:0.2.0'
-        }
-    }
-
+allprojects {
     repositories {
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        mavenLocal()
-        mavenCentral()
+        google()
+        jcenter()
     }
+}
+
+ext {
+    robolectricVersion = "4.0.2"
 }

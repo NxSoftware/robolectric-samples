@@ -2,7 +2,6 @@ apply plugin: "com.android.application"
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.example"
@@ -15,9 +14,9 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:22.0.0"
+    implementation "com.android.support:appcompat-v7:21.0.3"
 
-    testCompile "junit:junit:4.10"
-    testCompile "org.assertj:assertj-core:1.7.0"
-    testCompile "org.robolectric:robolectric:${robolectricVersion}"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:1.7.0"
+    testImplementation "org.robolectric:robolectric:${robolectricVersion}"
 }
